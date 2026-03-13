@@ -36,7 +36,7 @@ const criar = (req, res) => {
     return res.status(400).json({ erro: "O campo 'estoque' é obrigatório e deve ser maior ou igual a zero", campo: "estoque" });
   }
 
-  // Monta o objeto com campos gerados pelo servidor
+  //Monta o objeto com campos gerados pelo servidor
   const novo = {
     id: nextId++,
     nome,
@@ -54,8 +54,19 @@ const criar = (req, res) => {
 };
 
 const atualizar = (req, res) => {
+  const idx = produtos.findIndex(p => p.id === Number(req.params.id));
+  if (idx === -1) return res.status(404).json({ erro: 'Produto não encontrado' });
 
+  const { nome, descricao, preco, categoria, estoque, ativo } = req.body;
+  produtos[idx] = {
+    ...produtos[idx],
+    nome, descricao, preco, categoria, estoque, ativo,
+    atualizado_em: new Date().toISOString()
+  };
+  res.status(200).json(produtos[idx]);
 };
+
+
 
 const remover = (req, res) => {
 
