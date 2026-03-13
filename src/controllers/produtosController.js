@@ -6,7 +6,9 @@ const listar = (req, res) => {
 };
 
 const buscarPorId = (req, res) => {
-
+      const p = produtos.find(p => p.id === Number(req.params.id));
+  if (!p) return res.status(404).json({ erro: 'Produto não encontrado' });
+  res.json(p);
 };
 
 const criar = (req, res) => {
