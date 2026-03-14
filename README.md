@@ -13,4 +13,10 @@ API REST para gerenciamento de produtos, desenvolvida com Node.js e Express.
 
 ## Endpoints
 
-(a ser preenchido)
+| Verbo | Path | Descrição | Status |
+|-------|------|-----------|--------|
+| GET | /api/v1/produtos | Lista todos os produtos | 200 |
+| GET | /api/v1/produtos/:id | Busca produto por ID | 200 / 404 |
+| POST | /api/v1/produtos | Cria novo produto | 201 / 400 |
+| PUT | /api/v1/produtos/:id | Atualiza produto | 200 / 404 |
+| DELETE | /api/v1/produtos/:id | Remove produto | 204 / 404 |
